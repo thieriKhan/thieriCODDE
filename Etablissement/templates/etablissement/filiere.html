@@ -1,0 +1,34 @@
+
+{% extends 'etablissement/base.html' %}
+{%  load static %}
+
+    {% block content %}
+    <!-- MAIN BODY -->
+ <h2 class="align-text-centre align-text-top text-sm-center text-white">Filieres</h2>
+    <section class="main-wrapper">
+	    <div class="container py-5">
+	    	<div class="row">
+                {% for fil in filieres %}
+	    		<div class="jumbotron col-12 col-sm-12 col-md-12  col-lg-4 col-xl-4 p-0">
+	  				<a href="filiere/{{ fil.id }}"><img src="{{ fil.image_Fi.url }}" class="img-fluid d-block"></a>
+	  				<div class="p-3">
+	  					<h4>{{ fil.Abrreviation_Fi }}</h4>
+	  					<a href="filiere/{{ fil.id }}" class="btn btn-outline-success col-8"  size="400x400">Send Message.</a>
+	  				</div>
+	  			</div>
+                {% endfor %}
+
+	    	</div>
+         <form class="form form-group" method="POST" action="" spellcheck="true">
+            {% csrf_token %}
+          <div class="row">
+              <textarea type="text" name="message" class="form-control col-9 mx-2 message" placeholder="Type your message" rows="1"></textarea>
+              <button class="btn btn-success col-2 px-3 mx-2 send-message">send<i class="fas fa-chevron-right"></i></button>
+          </div>
+        </form>
+	    </div>
+
+
+    </section>
+
+{% endblock content %}

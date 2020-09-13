@@ -1,0 +1,17 @@
+asgiref==3.2.10
+certifi==2020.6.20
+chardet==3.0.4
+Django==3.1
+django-bootstrap-form==3.4
+django-crispy==1.8.1
+django-crispy-forms==1.9.2
+django-widget-tweaks==1.4.8
+idna==2.10
+Pillow==7.2.0
+PyJWT==1.7.1
+pytz==2020.1
+requests==2.24.0
+six==1.15.0
+sqlparse==0.3.1
+twilio==6.44.2
+urllib3==1.25.10

@@ -1,0 +1,41 @@
+
+{% extends 'etablissement/base.html' %}
+{%  load static %}
+
+    {% block content %}
+
+
+    <style>
+    		#messages{
+			background-color: transparent;
+			color: darkred;
+			padding: 10px;
+			margin-top: 10px;
+		}
+	</style>
+
+    <!-- MAIN BODY -->
+    <section class="main">
+      <div class="form-wrapper">
+        <form class="form form-group" action="" method="POST">
+          {% csrf_token %}
+          <h4 class="text-white text-center">Sign in</h4>
+          <label class="text-white"><i class="fas fa-user"></i> Username :</label>
+          <input type="text" name="username" class="form-control" >
+          <label class="text-white mt-2"><i class="fas fa-key"></i> Password :</label>
+          <input type="password" name="password" class="form-control" required>
+          <button class="btn btn-sm btn-success px-4 mt-3">Sign in</button>
+          <hr class="bg-white">
+          <div>
+           <a href="{% url 'register' %}" class="d-flex justify-content-center text-white">Create an account</a>
+          </div>
+        </form>
+        {% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}
+      </div>
+
+    </section>
+
+    </div>
+{% endblock content %}

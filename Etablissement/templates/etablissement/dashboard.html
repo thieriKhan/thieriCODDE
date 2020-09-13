@@ -1,0 +1,18 @@
+
+{% extends 'etablissement/base.html' %}
+{%  load static %}
+
+    {% block content %}
+
+    <!-- MAIN BODY -->
+
+
+        <form class="form form-group" method="POST">
+          <div class="row">
+              <textarea type="text" name="message" class="form-control col-9 mx-2 message" placeholder="Type your message" rows="1"></textarea>
+              <button class="btn btn-success col-2 px-3 mx-2 send-message">send<i class="fas fa-chevron-right"></i></button>
+          </div>
+        </form>
+    </section>
+
+  {% endblock content %}

@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="device" content="width=device-width">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{%static 'assets/css/animate.css' %}">
+      <link rel="stylesheet" href="{%static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/all.min.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
+
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+    		#messages{
+			background-color: transparent;
+			color: darkred;
+			padding: 10px;
+			margin-top: 10px;
+		}
+	</style>
+
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="hero-bg">
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html">
+          <h4 class="pl-2">Logo.</h4>
+        </a>
+          <button class="navbar-toggler" type="button"
+          data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item font-weight-bold">
+                <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-user"></i> Sign in</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </header>
+
+    <!-- MAIN BODY -->
+    <section class="main">
+      <div class="form-wrapper">
+        <form class="form form-group" method="POST" action="">
+          {%  csrf_token %}
+          <h4 class="text-white text-center">Sign up</h4>
+
+
+          <label class="text-white"><i class="fas fa-user"></i> Username :</label>
+          {{form.username}}
+
+             <label class="text-white"><i class="fas fa-envelope-square"></i> Email :</label>
+            {{form.email}}
+
+
+
+          <label class="text-white mt-2"><i class="fas fa-key"></i> Password :</label>
+          {{form.password1}}
+
+           <label class="text-white mt-2"><i class="fas fa-key"></i>confirm Password :</label>
+          {{form.password2}}
+
+          <button class="btn btn-sm btn-success px-4 mt-3">Sign in</button>
+          <hr class="bg-white">
+          <div>
+           <a href="{% url 'login' %}" class="d-flex justify-content-center text-white">Have already an account</a>
+          </div>
+        </form>
+         {% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}
+      </div>
+    </section>
+    </div>
+
+    	<script>
+			
+		 var form_fields = document.getElementsByTagName('input')
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
