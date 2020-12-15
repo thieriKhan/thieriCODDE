@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="{% static 'assets/css/animate.min.css'%}">
     <link rel="stylesheet" href="{% static 'assets/css/all.min.css'%}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
-      <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+      
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
@@ -20,7 +20,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     
 
-    <title>Login</title>
+    <title>thieri</title>
   </head>
   <body>
     <div class="hero-bg">
@@ -31,18 +31,23 @@
         <a class="navbar-brand" href="{% url 'login' %}">
           <h4 class="pl-2">Logo.</h4>
         </a>
-          <button class="navbar-toggler" type="button"
+        {%if hide %}
+          <button class="navbar-toggler float-right " type="button"
           data-toggle="collapse" data-target="#navbarResponsive"
           aria-controls="navbarResponsive"
           aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon float-right"></span>
           </button>
+          
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto px-3">
               <li class="nav-item font-weight-bold">
-                <div class="btn-group">
+                <div class="btn-group float-right">
 
-  <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  
+
+  <a class="nav-link dropdown-toggle float-right" data-toggle="dropdown" 
+  aria-haspopup="true" aria-expanded="false">
     Account
   </a>
   <div class="dropdown-menu dropdown-menu-right">
@@ -56,14 +61,15 @@
       </nav>
 
 
+   
 
             <input type="checkbox" id="check">
     <label for="check">
       <i class="fas fa-bars" id="btn"></i>
       <i class="fas fa-times" id="cancel"></i>
     </label>
-    <div class="sidebar">
-      <header>Menu</header>
+    <div class="sidebar ">
+      <header class="d-none d-sm-block" >Menu</header>
       <a href="{% url 'home' %}" class="active">
         <i class="fas fa-qrcode"></i>
         <span>Home</span>
@@ -83,6 +89,39 @@
         <span>Welcome</span>
       </a>
     </div>
+    {%endif%}
+
+    {% if clear %} 
+    <button class="navbar-toggler" type="button"
+          data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item font-weight-bold">
+                <a class="nav-link float-right" href="{% url 'register' %}"><i class="fas fa-user"></i> Sign up</a>
+              </li>
+            </ul>
+          </div>
+          {%endif%}
+
+          {%if clear2 %}
+          <button class="navbar-toggler" type="button"
+          data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item font-weight-bold ">
+                <a class="nav-link float-right" href="{% url 'login' %}"><i class="fas fa-user"></i> Sign in</a>
+              </li>
+            </ul>
+          {%endif%}
+  
     </header>
 
 
@@ -99,7 +138,7 @@
 
           <script type="text/javascript" src="{%  static 'assets/js/app.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js">
-{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>

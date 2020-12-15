@@ -15,7 +15,6 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     specialite = models.CharField(null=True, blank=True, max_length=50)
     profile_image = models.ImageField(default='default-avatar.png', upload_to='img/profile', null=True, blank=True)
-
     def __str__(self):
         return self.user.username
 

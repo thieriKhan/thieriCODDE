@@ -8,11 +8,11 @@
 
 
             <div class="row">
-                <div class="left-side col-md-5 ">
+                <div class="left-side col-md-5   ">
                      
                         <div class="no-gutters media  d-flex justify-content-center">
                             <img class="rounded-circle account-image" width="200px" height="210px" src="{{ profile.profile_image.url }}">
-                            <div class="media-body text-white ">
+                            <div class="media-body text-white  ">
                                 <h2 class="account-heading">{{ profile.user.username }}</h2>
                                 <label class="text-white">Email : <i class="text-secondary" >{{ profile.user.email }}</i></label><br>
                                <label class="text-white">numero whatsapp : <i class="text-secondary">{{ profile.phone_number }}</i></label><br>
@@ -20,49 +20,33 @@
                                <label class="text-white">Date de naissance : <i class="text-secondary">{{ profile.birth_date }}</i></label><br>
                                 <label class="text-white">Filiere : <i class="text-secondary">{{ profile.filiere }}</i></label><br>
                                 <label class="text-white">Specialite : <i class="text-secondary">{{ profile.specialite }}</i></label><br>
-                                
                             </div>
-
                         </div>
-
                     
                 </div>
-                <class class="col-md-5 no-gutters ">
-                    <div class="form-wrapper right-side" >
+                
+                    <div class="form-wrapper right-side      col-md-5 no-gutters col-sm-12 " >
                         <form class="form form-group" id="forme" enctype="multipart/form-data"  data-filieres-url="{% url 'ajax_load_filieres' %}" method="POST" action="" >
                             {%  csrf_token %}
                              <h4 class="text-white text-center">update your informations here</h4><br>
                             {{user_form.username}}<br>
-                            
                             {{user_form.email}}<br>
-
                             {{profile_Form.phone_number}}<br>
-
-                             
                             {{profile_Form.birth_date}}<br>
-
-                             
                             {{profile_Form.departement}} <label class="text-white mt-2">departement</label><br><br>
-
-                            
                             {{profile_Form.filiere}}<label class="text-white mt-2">filiere</label><br> <br>
-
                             {{profile_Form.specialite}}<br>
-
                             {{ profile_Form.profile_image }}
-
                             <button class="btn btn-sm btn-success px-4 mt-3">update</button>
-                            <hr class="bg-white">
-          
                         </form>
                     </div>
-                </div>
+                
 
             </section>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $("#id_departement").change(function () {
-        const url = $("#forme").attr("data-filieres-url");  // get the url of the `load_cities` view
+        const url = $("#forme").attr("data-filieres-url");  // get the url of the `load_filiere` view
         const departementId = $(this).val();  // get the selected country ID from the HTML input
 
         $.ajax({                       // initialize an AJAX request

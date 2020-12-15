@@ -6,10 +6,10 @@
     <!-- MAIN BODY -->
  <h2 class="align-text-centre align-text-top text-sm-center text-white">Filieres</h2>
     <section class="main-wrapper">
-	    <div class="container py-5">
+	    <div class="container py-5 transparent pl-10">
 	    	<div class="row">
                 {% for fil in filieres %}
-	    		<div class="jumbotron col-12 col-sm-12 col-md-12  col-lg-4 col-xl-4 p-0">
+	    		<div class="jumbotron col-12 col-sm-12 col-md-6  col-lg-4 col-xl-4 p-0 table-responsive ">
 	  				<a href="filiere/{{ fil.id }}"><img src="{{ fil.image_Fi.url }}" class="img-fluid d-block"></a>
 	  				<div class="p-3">
 	  					<h4>{{ fil.Abrreviation_Fi }}</h4>

@@ -16,7 +16,9 @@ from .forms import *
 
 @unauthenticated_user
 def registerPage(request):
-
+    hide= False
+    clear2= True
+    request.get_host()
         #form2 = ProfileForm()
     form = SignUpForm()
     if request.method == 'POST':
@@ -26,36 +28,44 @@ def registerPage(request):
         if form.is_valid() :
             user=form.save()
             username = form.cleaned_data.get('username')
-            
             group = Group.objects.get(name__iexact="ETUDIANTS")
             user.groups.add(group)
-
-            messages.success(request, 'Account was created for ' + username)
+            msg = 'Account was created for ' + username
+            messages.success(request, msg , extra_tags="alert")
+           
+       
             return redirect('login')
         else:
-            messages.error(request, form.error_messages)
-    context = {'form': form} #'form2':form2
+            messages.error(request,form.errors)
+            
+        
+    context = {'form': form , 'hide':hide, 'clear2' : clear2} 
     return render(request, 'etablissement/signup.html', context)
 
 @unauthenticated_user
 def loginPage(request):
+    clear= True
     if request.method == 'POST':
         nom = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=nom, password=password)
+        
+       
 
         if user is not None:
             login(request, user)
             return redirect('home')
         else:
             messages.info(request, 'Username OR password is incorrect')
-
-    context = {}
+    hide = False
+    context = {'hide': hide, 'clear':clear  }
     return render(request, 'etablissement/index.html', context)
+
 @login_required(login_url='login')
 def welcome(request):
-    context ={}
-    return render(request,'etablissement/welcome.html',context)
+     hide = True
+     context ={'hide':hide}
+     return render(request,'etablissement/welcome.html',context)
 
 
 def logoutUser(request):
@@ -66,6 +76,7 @@ def logoutUser(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['ENSEIGNANTS','admin'])
 def home(request):
+    hide= True
     from . import models
     #get phonenumber of all students
     stud_number = []
@@ -87,12 +98,13 @@ def home(request):
             #sendMedia(std,mess,img)
 
     departements = models.Departement.objects.all()
-    context={'departements':departements}
+    context={'departements':departements , 'hide': hide}
     return render(request, 'etablissement/departement.html',context)
 
 @login_required
 @transaction.atomic
 def update_profile(request):
+    hide= True
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST,request.FILES or None, instance=request.user.profile)
@@ -114,7 +126,8 @@ def update_profile(request):
   
     context = {'profile' : profile,
     'user_form': user_form,
-    'profile_Form': profile_form
+    'profile_Form': profile_form, 
+    'hide' : hide
     }
     return render(request, 'etablissement/profile.html', context)
 
@@ -122,13 +135,14 @@ def update_profile(request):
 
 @login_required(login_url='login')
 def profile(request):
-    context = {}
+    hide = True
+    context = { 'hide' : hide}
     return render(request , 'etablissement/profile.html', context)
 
 
 @login_required(login_url='login')
 def sendDepartement(request,id_dep):
-
+    hide = True
     phones = query.phone_Dep("ETUDIANTS",id_dep)
     from . import models
     filieres =models.Filiere.objects.filter(Departement_id=id_dep)
@@ -141,13 +155,13 @@ def sendDepartement(request,id_dep):
         for ph in phones:
             sendMessage(ph,mess)
 
-    context= {"filieres": filieres}
+    context= {"filieres": filieres,  'hide' : hide}
     return render (request, 'etablissement/filiere.html',context)
 
 @login_required(login_url='login')
 def sendFiliere(request,id_fi):
     phones = query.phone_Fi("ETUDIANTS", id_fi)
-
+    hide = True
 
     # send the message
     if request.method == "POST":
@@ -157,7 +171,7 @@ def sendFiliere(request,id_fi):
 
         for ph in phones:
             sendMessage(ph, mess)
-    context={}
+    context= {'hide' : hide}
 
     return render (request, 'etablissement/board.html',context)
 

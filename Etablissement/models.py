@@ -16,7 +16,7 @@ class Filiere(models.Model):
     Abrreviation_Fi = models.CharField(max_length=10,blank=False, null=False,default=None)
     nom_Fi = models.CharField(max_length=50 , blank=False, null=False)
     Departement = models.ForeignKey(Departement, on_delete=models.CASCADE, blank= False , null=False)
-    image_Fi = models.ImageField(default='img/img1.jpg', upload_to='img')
+    image_Fi = models.ImageField(default='img/img1.jpg', upload_to='img' )
 
     
     def __str__(self):

@@ -14,13 +14,21 @@ def sendMessage(receiver, message):
 # this is the Twilio sandbox testing number
     from_whatsapp_number='whatsapp:+14155238886'
 # replace this number with your own WhatsApp Messaging number
+    
+    if receiver.startwith('6'):
+        to_whatsapp_number2 = f'whatsapp:+237{receiver}'
+    else :
+        to_whatsapp_number2 = f'whatsapp:+2376{receiver}'
+        to_whatsapp_number = f'whatsapp:+237{receiver}'
 
-
-    to_whatsapp_number = f'whatsapp:+237{receiver}'
 
     client.messages.create(body=message,
                        from_=from_whatsapp_number,
                        to=to_whatsapp_number)
+    
+    client.messages.create(body= message,
+                        from_ = from_whatsapp_number,
+                        to=to_whatsapp_number)
 
 
 

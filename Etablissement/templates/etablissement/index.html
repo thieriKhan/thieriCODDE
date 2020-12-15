@@ -8,7 +8,7 @@
     <style>
     		#messages{
 			background-color: transparent;
-			color: darkred;
+			color: rgb(230, 92, 92);
 			padding: 10px;
 			margin-top: 10px;
 		}
@@ -16,8 +16,9 @@
 
     <!-- MAIN BODY -->
     <section class="main">
-      <div class="form-wrapper">
-        <form class="form form-group" action="" method="POST">
+      <div class="form-wrapper ">
+  
+        <form class="form form-group " action="" method="POST">
           {% csrf_token %}
           <h4 class="text-white text-center">Sign in</h4>
           <label class="text-white"><i class="fas fa-user"></i> Username :</label>
@@ -31,7 +32,19 @@
           </div>
         </form>
         {% for message in messages %}
-					<p id="messages">{{message}}</p>
+          {% if 'alert'  in message.tags %}
+          <div  class="alert alert-success  alert-dismissible " role="alert">
+          <h4 class="alert-heading">SUCCESS!</h4>
+          {{message}}
+  
+          </div>
+        {% else %}
+          <div id="messages" class="alert alert-danger alert-dismissible " role="alert">
+          <h4 class="alert-heading">ERROR!</h4>
+          {{message}}
+          
+        </div>
+          {% endif %}
 				{% endfor %}
       </div>
 

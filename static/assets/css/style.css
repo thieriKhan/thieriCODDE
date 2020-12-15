@@ -9,12 +9,30 @@
   padding: 20px;
   background:rgba(0, 0, 0, 0.5);
 }
+@media (min-width: 576px) and (max-width : 920px ) {
+.form-wrapper{
+  width: 60%;
+  padding: 20px;
+  background:rgba(0, 0, 0, 0.5);
+}
+}
 .forme {
   width: 100%;
 }
 
 .form-wrapper button{
   width: 100%;
+}
+
+@media only screen and (max-width: 576px) {
+  .form-wrapper{
+    width: 85%;
+    padding: 20px;
+    background:rgba(0, 0, 0, 0.5);
+  }
+  .text-white{
+    align-items: center;
+  }
 }
 /*.account-image{*/
 /*  width: 100px;*/
@@ -72,6 +90,7 @@ button{
 .img-fluid {
   width: auto;
   max-height: 50%;
+  padding-left: 10px;
 }
 
 .left-side , .right-side{
@@ -103,6 +122,13 @@ button{
  
 }
 
+#logo{
+}
+
+body{
+  background-color: #ebeff5;
+}
+
 
 
 
@@ -113,6 +139,16 @@ button{
   margin: 0;
   padding: 0;
   text-decoration: none;
+}
+@media (max-width: 420px) {
+  .sidebar{
+  position: fixed;
+  width: 190px;
+  left: -240px;
+  height: 100%;
+  background: transparent;
+  transition: all .5s ease;
+}
 }
 .sidebar{
   position: fixed;
@@ -193,11 +229,16 @@ label #cancel{
   visibility: visible;
 }
 @media(max-width : 860px){
+  .mytext{
+    font-size: 10px;
+    position: relative;
+    text-align: center;
+  }
   .sidebar{
     height: auto;
-    width: 70px;
-    left: 0;
-    margin: 100px 0;
+    width: 20px;
+    left: 0px;
+    margin: 0px 0;
   }
   header,#btn,#cancel{
     display: none;
@@ -214,78 +255,19 @@ label #cancel{
   .sidebar a i{
     margin-left: -10px;
   }
-  a:hover {
+  /* a:hover {
     width: 200px;
     background: inherit;
-  }
+  } */
   .sidebar a:hover span{
     opacity: 1;
     visibility: visible;
   }
 }
 
+.col-sm-12{float: center;
+}
+.im{
+  margin-left: 20px;
+}
 
-
-/* animations
-*/
-
-*{
-    margin: 0;
-    padding: 0;
-}
-.text-box{
-    font-size: 100px;
-    font-family: sans-serif;
-    position: absolute;
-    top: 30%;
-    left: 40%;
-    transform: translate(-50%,-50%);
-}
-span{
-    animation: mover 6s linear infinite;
-    display: inline-block;
-    color: #fff;
-    font-weight: bolder;
-}
-@keyframes mover
-{
-    0%{
-        text-shadow: 0 0 30px rgba(0, 0, 0, 0);
-      }
-    50%{
-        text-shadow: 0 0 30px rgba(0, 0, 0, 0.30);
-        transform: translateY(30px);
-      }
-    100%
-      {
-        text-shadow: 0 0 30px rgba(0, 0, 0, 0);
-      }
-}
-span:nth-child(1)
-{
-    animation-delay: 0.5s;
-}
-span:nth-child(2)
-{
-    animation-delay: 1s;
-}
-span:nth-child(3)
-{
-    animation-delay: 1.5s;
-}
-span:nth-child(4)
-{
-    animation-delay: 2s;
-}
-span:nth-child(5)
-{
-    animation-delay: 2.5s;
-}
-span:nth-child(6)
-{
-    animation-delay: 3s;
-}
-span:nth-child(7)
-{
-    animation-delay: 3.5s;
-}

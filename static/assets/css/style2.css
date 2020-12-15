@@ -3,14 +3,14 @@
     padding: 0;
 }
 .text-box{
-    font-size: 100px;
+    font-size: 80px;
     font-family: sans-serif;
     position: absolute;
     top: 20%;
     left: 48%;
     transform: translate(-50%,-50%);
 }
-span{
+    .an{
     animation: mover 6s linear infinite;
     display: inline-block;
     color: #fff;
@@ -30,34 +30,35 @@ span{
         text-shadow: 0 0 30px rgba(0, 0, 0, 0);
       }
 }
-span:nth-child(1)
+.an:nth-child(1)
 {
     animation-delay: 0.5s;
 }
-span:nth-child(2)
+.an:nth-child(2)
 {
     animation-delay: 1s;
 }
-span:nth-child(3)
+.an:nth-child(3)
 {
     animation-delay: 1.5s;
 }
-span:nth-child(4)
+.an:nth-child(4)
 {
     animation-delay: 2s;
 }
-span:nth-child(5)
+.an:nth-child(5)
 {
     animation-delay: 2.5s;
 }
-span:nth-child(6)
+.an:nth-child(6)
 {
     animation-delay: 3s;
 }
-span:nth-child(7)
+.an:nth-child(7)
 {
     animation-delay: 3.5s;
 }
+
 .consigne li{
     font-size: 25px;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
